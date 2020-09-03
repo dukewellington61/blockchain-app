@@ -7,7 +7,6 @@ import Interface from "./components/layout/Interface";
 function App() {
   return (
     <Router>
-      <Navbar />
       <Interface />
     </Router>
   );

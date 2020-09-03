@@ -1,22 +1,23 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Block from "./Block";
 
-const Blockchain = ({ blockchain, blockChainService }) => {
+const Blockchain = ({ blockchain, blockchainService, clickHandler }) => {
+  console.log(blockchainService);
+
   return (
     <div>
       {blockchain.map((block, index, arr) => (
         <Block
+          key={index}
           block={block}
           index={index}
           blockArray={arr}
-          blockChainService={blockChainService}
+          blockchainService={blockchainService}
+          clickHandler={() => clickHandler(index)}
         />
       ))}
     </div>
   );
 };
-
-Blockchain.propTypes = {};
 
 export default Blockchain;

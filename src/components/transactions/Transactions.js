@@ -1,24 +1,17 @@
-import React, { Fragment, useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment } from "react";
 import Transaction from "./Transaction";
 
-const Transactions = ({ transactions, index, blockChainService }) => {
-  const [blockIndex, setBlockIndex] = useState(null);
-
-  useEffect(() => {
-    setBlockIndex(index);
-  }, [blockIndex]);
-
+const Transactions = ({ transactions, index, blockchainService }) => {
   return (
     <Fragment>
-      <h1>Transactions inside block {blockIndex}</h1>
+      <h1>Transactions inside block {index}</h1>
       <div>
         {transactions === "Genisis block" && "This block has no transactions"}
       </div>
 
       <div>
         {transactions !== "Genisis block" && (
-          <table class="table table-hover table-striped">
+          <table className="table table-hover table-striped">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -33,9 +26,10 @@ const Transactions = ({ transactions, index, blockChainService }) => {
             <tbody>
               {transactions.map((transaction, index, array) => (
                 <Transaction
+                  key={index}
                   transaction={transaction}
                   index={index}
-                  blockChainService={blockChainService}
+                  blockchainService={blockchainService}
                 />
               ))}
             </tbody>
@@ -45,7 +39,5 @@ const Transactions = ({ transactions, index, blockChainService }) => {
     </Fragment>
   );
 };
-
-Transactions.propTypes = {};
 
 export default Transactions;

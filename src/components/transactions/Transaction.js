@@ -1,19 +1,18 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment, useRef } from "react";
 
-const Transaction = ({ index, transaction, blockChainService }) => {
+const Transaction = ({ index, transaction, blockchainService }) => {
   return (
     <tr>
       <td>{index}</td>
-      <td class="text-truncate" style={{ maxWidth: "100px" }}>
+      <td className="text-truncate" style={{ maxWidth: "100px" }}>
         {transaction.fromAddress === null ? (
           "System"
         ) : (
           <Fragment>
             <a>{transaction.fromAddress}</a>
-            <span class="text-muted">
+            <span className="text-muted">
               <small>
-                {blockChainService.addressIsFromCurrentUser(
+                {blockchainService.addressIsFromCurrentUser(
                   transaction.fromAddress
                 ) && "That's yours!"}
               </small>
@@ -22,27 +21,24 @@ const Transaction = ({ index, transaction, blockChainService }) => {
         )}
       </td>
 
-      <td class="text-truncate" style={{ maxWidth: "100px" }}>
-        {transaction.fromAddress === null ? (
-          "System"
-        ) : (
-          <Fragment>
-            <a>{transaction.toAddress}</a>
-            <span class="text-muted">
-              <small>
-                {blockChainService.addressIsFromCurrentUser(
-                  transaction.toAddress
-                ) && "That's yours!"}
-              </small>
-            </span>
-          </Fragment>
+      <td className="text-truncate" style={{ maxWidth: "100px" }}>
+        <Fragment>
+          <a>{transaction.toAddress}</a>
+          <span className="text-muted">
+            <small>
+              {blockchainService.addressIsFromCurrentUser(
+                transaction.toAddress
+              ) && "That's yours!"}
+            </small>
+          </span>
+        </Fragment>
         )}
       </td>
 
       <td>
         {transaction.amount}
         {transaction.fromAddress === null && (
-          <span class="text-muted">
+          <span className="text-muted">
             <small>(Block reward)</small>
           </span>
         )}
@@ -50,7 +46,7 @@ const Transaction = ({ index, transaction, blockChainService }) => {
 
       <td>
         {transaction.timestamp}
-        <span class="text-muted">
+        <span className="text-muted">
           <small>{transaction.timestamp}</small>
         </span>
       </td>
@@ -61,7 +57,5 @@ const Transaction = ({ index, transaction, blockChainService }) => {
     </tr>
   );
 };
-
-Transaction.propTypes = {};
 
 export default Transaction;
