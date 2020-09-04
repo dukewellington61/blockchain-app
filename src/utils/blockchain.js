@@ -30,4 +30,8 @@ export class BlockchainService {
       privateKey: key.getPrivate("hex"),
     });
   }
+
+  addTransaction(transaction) {
+    this.blockchainInstance.addTransaction(transaction);
+  }
 }

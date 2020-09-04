@@ -2,8 +2,6 @@ import React from "react";
 import Block from "./Block";
 
 const Blockchain = ({ blockchain, blockchainService, clickHandler }) => {
-  console.log(blockchainService);
-
   return (
     <div>
       {blockchain.map((block, index, arr) => (
