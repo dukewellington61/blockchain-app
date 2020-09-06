@@ -29,7 +29,7 @@ const Interface = (props) => {
         clickHandlerTwo={clickHandlerTwo}
       />
       <div
-        class="interface_content"
+        className="interface_content"
         style={{ display: renderContent ? "block" : "none" }}
       >
         <Blockchain

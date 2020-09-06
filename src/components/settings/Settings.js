@@ -11,13 +11,13 @@ const Settings = ({ blockchainService, renderSettings }) => {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleClick = (e) => {
     blockchainService.blockchainInstance.miningReward = miningReward;
     blockchainService.blockchainInstance.difficulty = difficulty;
-    document.removeEventListener("click", handleSubmit);
+    document.removeEventListener("click", handleClick);
   };
 
-  if (renderSettings) document.addEventListener("click", handleSubmit);
+  if (renderSettings) document.addEventListener("click", handleClick);
 
   return (
     <div className="container">

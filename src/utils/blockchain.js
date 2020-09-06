@@ -1,4 +1,4 @@
-import { Blockchain } from "../../node_modules/blockchain/vid4/blockchain";
+import { Blockchain } from "../blockchain";
 import EC from "elliptic";
 
 export class BlockchainService {

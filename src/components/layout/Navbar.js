@@ -2,12 +2,19 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import Settings from "../settings/Settings";
 import CreateTransaction from "../transactions/CreateTransaction";
+import PendingTransactions from "../transactions/PendingTransactions";
 
 const Navbar = ({ blockchainService, clickHandlerTwo }) => {
+  const [numberPendingTransactions, setNumberPendingTransactions] = useState(0);
+
+  const getNumberOfPendingTransactions = (number) =>
+    setNumberPendingTransactions(number);
+
   const [renderSettings, setRenderSettings] = useState(false);
 
   const yesRenderSettings = () => {
     setRenderSettings(true);
+    notRenderMinePendingTransactions();
     notRenderCreateTransaction();
     clickHandlerTwo(false);
   };
@@ -22,11 +29,29 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
   const yesRenderCreateTransaction = () => {
     setRenderCreateTransaction(true);
     notRenderSettings();
+    notRenderMinePendingTransactions();
     clickHandlerTwo(false);
   };
 
   const notRenderCreateTransaction = () => {
     setRenderCreateTransaction(false);
+    clickHandlerTwo(true);
+  };
+
+  const [
+    renderMinePendingTransactions,
+    setRenderMinePendingTransactions,
+  ] = useState(false);
+
+  const yesRenderMinePendingTransactions = () => {
+    setRenderMinePendingTransactions(true);
+    notRenderSettings();
+    notRenderCreateTransaction();
+    clickHandlerTwo(false);
+  };
+
+  const notRenderMinePendingTransactions = () => {
+    setRenderMinePendingTransactions(false);
     clickHandlerTwo(true);
   };
 
@@ -39,6 +64,7 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
             onClick={() => {
               notRenderSettings();
               notRenderCreateTransaction();
+              notRenderMinePendingTransactions();
             }}
             style={{ color: "white" }}
           >
@@ -46,12 +72,17 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
           </Link>
         </div>
         <div>
-          <button className="btn btn-outline-light">
-            Pending transactions
-            <span className="badge badge-light">
-              {/* {"blockchain.pendingTransactions.length"} */}
-            </span>
-          </button>
+          {numberPendingTransactions > 0 && (
+            <button
+              onClick={yesRenderMinePendingTransactions}
+              className="btn btn-outline-light"
+            >
+              Pending transactions
+              <span className="badge badge-light">
+                {numberPendingTransactions}
+              </span>
+            </button>
+          )}
           &nbsp;
           <button onClick={yesRenderSettings} className="btn btn-outline-light">
             Settings
@@ -75,8 +106,14 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
       <div style={{ display: renderCreateTransaction ? "block" : "none" }}>
         <CreateTransaction
           blockchainService={blockchainService}
-          renderCreateTransaction={renderCreateTransaction}
+          getNumberOfPendingTransactions={getNumberOfPendingTransactions}
         />
+      </div>
+
+      <div
+        style={{ display: renderMinePendingTransactions ? "block" : "none" }}
+      >
+        <PendingTransactions blockchainService={blockchainService} />
       </div>
     </Fragment>
   );
