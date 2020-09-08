@@ -1,10 +1,20 @@
 import React from "react";
 import Transactions from "../transactions/Transactions";
 
-const PendingTransactions = ({ blockchainService }) => {
+const PendingTransactions = ({
+  blockchainService,
+  clickHandlerTwo,
+  notRenderMinePendingTransactions,
+}) => {
+  const minePendingTransactions = () => {
+    blockchainService.minePendingTransactions();
+    clickHandlerTwo(true);
+    notRenderMinePendingTransactions();
+  };
+
   return (
-    <div class="container">
-      <div class="alert alert-success" role="alert">
+    <div className="container">
+      <div className="alert alert-success" role="alert">
         Transaction created successfully!
       </div>
 
@@ -20,9 +30,11 @@ const PendingTransactions = ({ blockchainService }) => {
         blockchainService={blockchainService}
       />
 
-      <button class="btn btn-primary"> Start mining</button>
+      <button className="btn btn-primary" onClick={minePendingTransactions}>
+        Start mining
+      </button>
 
-      <div>Mining block.. Hang on...</div>
+      <div>Mining block.. Hang on yo...</div>
     </div>
   );
 };

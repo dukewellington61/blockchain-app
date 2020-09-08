@@ -5,11 +5,6 @@ import CreateTransaction from "../transactions/CreateTransaction";
 import PendingTransactions from "../transactions/PendingTransactions";
 
 const Navbar = ({ blockchainService, clickHandlerTwo }) => {
-  const [numberPendingTransactions, setNumberPendingTransactions] = useState(0);
-
-  const getNumberOfPendingTransactions = (number) =>
-    setNumberPendingTransactions(number);
-
   const [renderSettings, setRenderSettings] = useState(false);
 
   const yesRenderSettings = () => {
@@ -72,14 +67,14 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
           </Link>
         </div>
         <div>
-          {numberPendingTransactions > 0 && (
+          {blockchainService.getPendingTransactions().length > 0 && (
             <button
               onClick={yesRenderMinePendingTransactions}
               className="btn btn-outline-light"
             >
               Pending transactions
               <span className="badge badge-light">
-                {numberPendingTransactions}
+                {blockchainService.getPendingTransactions().length}
               </span>
             </button>
           )}
@@ -106,14 +101,19 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
       <div style={{ display: renderCreateTransaction ? "block" : "none" }}>
         <CreateTransaction
           blockchainService={blockchainService}
-          getNumberOfPendingTransactions={getNumberOfPendingTransactions}
+          // getNumberOfPendingTransactions={getNumberOfPendingTransactions}
+          yesRenderMinePendingTransactions={yesRenderMinePendingTransactions}
         />
       </div>
 
       <div
         style={{ display: renderMinePendingTransactions ? "block" : "none" }}
       >
-        <PendingTransactions blockchainService={blockchainService} />
+        <PendingTransactions
+          blockchainService={blockchainService}
+          clickHandlerTwo={clickHandlerTwo}
+          notRenderMinePendingTransactions={notRenderMinePendingTransactions}
+        />
       </div>
     </Fragment>
   );

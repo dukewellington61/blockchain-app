@@ -6,14 +6,16 @@ export class BlockchainService {
   walletKeys = [];
 
   constructor() {
-    this.blockchainInstance.difficulty = 1;
+    this.blockchainInstance.difficulty = 2;
     this.blockchainInstance.minePendingTransactions("my-wallet-address");
 
     this.generateWalletKeys();
   }
 
-  getBlocks() {
-    return this.blockchainInstance.cain;
+  minePendingTransactions() {
+    this.blockchainInstance.minePendingTransactions(
+      this.walletKeys[0].publicKey
+    );
   }
 
   addressIsFromCurrentUser(address) {
@@ -29,6 +31,10 @@ export class BlockchainService {
       publicKey: key.getPublic("hex"),
       privateKey: key.getPrivate("hex"),
     });
+  }
+
+  getPendingTransactions() {
+    return this.blockchainInstance.pendingTransactions;
   }
 
   addTransaction(transaction) {

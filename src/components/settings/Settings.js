@@ -11,22 +11,21 @@ const Settings = ({ blockchainService, renderSettings }) => {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleClick = (e) => {
-    blockchainService.blockchainInstance.miningReward = miningReward;
-    blockchainService.blockchainInstance.difficulty = difficulty;
-    document.removeEventListener("click", handleClick);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    blockchainService.blockchainInstance.miningReward = parseInt(miningReward);
+    blockchainService.blockchainInstance.difficulty = parseInt(difficulty);
+    console.log(blockchainService);
   };
-
-  if (renderSettings) document.addEventListener("click", handleClick);
 
   return (
     <div className="container">
       <h1>Settings</h1>
       <p>
         Control how the blockchain behaves when new transactions or blocks are
-        created. Changes are automatically saved.
+        created.
       </p>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label for="difficulty">Difficulty</label>
           <input
@@ -36,6 +35,7 @@ const Settings = ({ blockchainService, renderSettings }) => {
             id="difficulty"
             onChange={handleChange}
             placeholder={blockchainService.blockchainInstance.difficulty}
+            required
           ></input>
           <small id="difficultyHelp" className="form-text text-muted">
             Difficulty controls how long the mining process takes. Higher
@@ -52,12 +52,16 @@ const Settings = ({ blockchainService, renderSettings }) => {
             id="miningReward"
             onChange={handleChange}
             placeholder={blockchainService.blockchainInstance.miningReward}
+            required
           ></input>
           <small id="miningRewardHelp" className="form-text text-muted">
             How much "coins" a miner receives for successfully creating a new
             block for the chain. Default: 100
           </small>
         </div>
+        <button type="submit" className="btn btn-primary">
+          submit changes
+        </button>
       </form>
     </div>
   );

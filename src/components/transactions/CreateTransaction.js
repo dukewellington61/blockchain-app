@@ -3,34 +3,27 @@ import { Transaction } from "../../blockchain";
 
 const CreateTransaction = ({
   blockchainService,
-  getNumberOfPendingTransactions,
+  yesRenderMinePendingTransactions,
 }) => {
   const [formData, setFormData] = useState({
-    transaction: {},
     toAddress: "",
     amount: "",
   });
 
-  const { transaction, toAddress, amount } = formData;
+  const { toAddress, amount } = formData;
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  useEffect(() => {
-    const transaction = new Transaction();
-    transaction.fromAddress = blockchainService.walletKeys[0].publicKey;
-    setFormData({ transaction: transaction });
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    transaction.toAddress = toAddress;
-    transaction.amount = amount;
-    transaction.signTransaction(blockchainService.walletKeys[0].keyObj);
-    blockchainService.addTransaction(transaction);
-    getNumberOfPendingTransactions(
-      blockchainService.blockchainInstance.pendingTransactions.length
-    );
+    const tx = new Transaction();
+    tx.fromAddress = blockchainService.walletKeys[0].publicKey;
+    tx.toAddress = toAddress;
+    tx.amount = amount;
+    tx.signTransaction(blockchainService.walletKeys[0].keyObj);
+    blockchainService.addTransaction(tx);
+    yesRenderMinePendingTransactions();
   };
 
   return (
@@ -45,7 +38,7 @@ const CreateTransaction = ({
             id="fromAddress"
             style={{ overflow: "hidden", background: "#D0D0D0" }}
           >
-            {formData.transaction.fromAddress}
+            {blockchainService.walletKeys[0].publicKey}
           </div>
           <small id="fromAddressHelp" className="form-text text-muted">
             This is your wallet address. You cannot change it because you can
