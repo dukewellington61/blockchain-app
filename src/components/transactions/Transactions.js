@@ -3,12 +3,8 @@ import Transaction from "./Transaction";
 
 const Transactions = ({ transactions, index, blockchainService }) => {
   return (
-    <Fragment>
-      {index === "none" ? (
-        <h1>Pending transactions</h1>
-      ) : (
-        <h1>Transactions inside block {index}</h1>
-      )}
+    <div>
+      {index !== "none" && <h1>Transactions inside block {index}</h1>}
       <div>
         {transactions === "Genisis block" && "This block has no transactions"}
       </div>
@@ -40,7 +36,7 @@ const Transactions = ({ transactions, index, blockchainService }) => {
           </table>
         )}
       </div>
-    </Fragment>
+    </div>
   );
 };
 

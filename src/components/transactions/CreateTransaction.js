@@ -4,6 +4,7 @@ import { Transaction } from "../../blockchain";
 const CreateTransaction = ({
   blockchainService,
   yesRenderMinePendingTransactions,
+  displayAlert,
 }) => {
   const [formData, setFormData] = useState({
     toAddress: "",
@@ -24,6 +25,7 @@ const CreateTransaction = ({
     tx.signTransaction(blockchainService.walletKeys[0].keyObj);
     blockchainService.addTransaction(tx);
     yesRenderMinePendingTransactions();
+    displayAlert("Transaction has been successfully created.");
   };
 
   return (

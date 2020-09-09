@@ -3,7 +3,7 @@ import Block from "./Block";
 
 const Blockchain = ({ blockchain, blockchainService, clickHandler }) => {
   return (
-    <div>
+    <div className="container">
       {blockchain.map((block, index, arr) => (
         <Block
           key={index}

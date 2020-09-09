@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Settings from "../settings/Settings";
 import CreateTransaction from "../transactions/CreateTransaction";
 import PendingTransactions from "../transactions/PendingTransactions";
+import Alerts from "../layout/Alerts";
 
 const Navbar = ({ blockchainService, clickHandlerTwo }) => {
   const [renderSettings, setRenderSettings] = useState(false);
@@ -50,6 +51,13 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
     clickHandlerTwo(true);
   };
 
+  const [renderAlert, setRenderAlert] = useState(false);
+
+  const displayAlert = (val) => {
+    setRenderAlert(val);
+    setTimeout(() => setRenderAlert(false), 10000);
+  };
+
   return (
     <Fragment>
       <nav className="navbar navbar-dark bg-dark">
@@ -91,17 +99,21 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
           </button>
         </div>
       </nav>
+      <div style={{ visibility: renderAlert ? "visible" : "hidden" }}>
+        <Alerts content={renderAlert} />
+      </div>
       <div style={{ display: renderSettings ? "block" : "none" }}>
         <Settings
           blockchainService={blockchainService}
           renderSettings={renderSettings}
+          displayAlert={displayAlert}
         />
       </div>
 
       <div style={{ display: renderCreateTransaction ? "block" : "none" }}>
         <CreateTransaction
           blockchainService={blockchainService}
-          // getNumberOfPendingTransactions={getNumberOfPendingTransactions}
+          displayAlert={displayAlert}
           yesRenderMinePendingTransactions={yesRenderMinePendingTransactions}
         />
       </div>
@@ -113,6 +125,7 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
           blockchainService={blockchainService}
           clickHandlerTwo={clickHandlerTwo}
           notRenderMinePendingTransactions={notRenderMinePendingTransactions}
+          displayAlert={displayAlert}
         />
       </div>
     </Fragment>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Settings = ({ blockchainService, renderSettings }) => {
+const Settings = ({ blockchainService, displayAlert }) => {
   const [formData, setFormData] = useState({
     difficulty: "",
     miningReward: "",
@@ -15,6 +15,9 @@ const Settings = ({ blockchainService, renderSettings }) => {
     e.preventDefault();
     blockchainService.blockchainInstance.miningReward = parseInt(miningReward);
     blockchainService.blockchainInstance.difficulty = parseInt(difficulty);
+    displayAlert(
+      `new settings: difficulty: ${blockchainService.blockchainInstance.difficulty}  mining reward: ${blockchainService.blockchainInstance.miningReward}`
+    );
     console.log(blockchainService);
   };
 

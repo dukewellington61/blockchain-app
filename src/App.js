@@ -6,7 +6,7 @@ import { BlockchainService } from "./utils/blockchain";
 
 function App() {
   const blockchainService = new BlockchainService();
-  console.log("App");
+
   return (
     <Router>
       <Interface blockchainService={blockchainService} />
