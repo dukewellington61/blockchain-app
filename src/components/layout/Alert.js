@@ -1,6 +1,6 @@
 import React from "react";
 
-const Alerts = ({ content }) => {
+const Alert = ({ content }) => {
   return (
     <div className="alert alert-success" role="alert">
       {content}
@@ -8,4 +8,4 @@ const Alerts = ({ content }) => {
   );
 };
 
-export default Alerts;
+export default Alert;

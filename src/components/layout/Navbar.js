@@ -1,138 +1,39 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Settings from "../settings/Settings";
-import CreateTransaction from "../transactions/CreateTransaction";
-import PendingTransactions from "../transactions/PendingTransactions";
-import Alerts from "../layout/Alerts";
 
-const Navbar = ({ blockchainService, clickHandlerTwo, displayWallet }) => {
-  const [renderSettings, setRenderSettings] = useState(false);
-
-  const yesRenderSettings = () => {
-    setRenderSettings(true);
-    notRenderMinePendingTransactions();
-    notRenderCreateTransaction();
-    clickHandlerTwo(false);
-    displayWallet(false);
-  };
-
-  const notRenderSettings = () => {
-    setRenderSettings(false);
-    clickHandlerTwo(true);
-  };
-
-  const [renderCreateTransaction, setRenderCreateTransaction] = useState(false);
-
-  const yesRenderCreateTransaction = () => {
-    setRenderCreateTransaction(true);
-    notRenderSettings();
-    notRenderMinePendingTransactions();
-    clickHandlerTwo(false);
-    displayWallet(false);
-  };
-
-  const notRenderCreateTransaction = () => {
-    setRenderCreateTransaction(false);
-    clickHandlerTwo(true);
-  };
-
-  const [
-    renderMinePendingTransactions,
-    setRenderMinePendingTransactions,
-  ] = useState(false);
-
-  const yesRenderMinePendingTransactions = () => {
-    setRenderMinePendingTransactions(true);
-    notRenderSettings();
-    notRenderCreateTransaction();
-    clickHandlerTwo(false);
-    displayWallet(false);
-  };
-
-  const notRenderMinePendingTransactions = () => {
-    setRenderMinePendingTransactions(false);
-    clickHandlerTwo(true);
-  };
-
-  const [renderAlert, setRenderAlert] = useState(false);
-
-  const displayAlert = (val) => {
-    setRenderAlert(val);
-    setTimeout(() => setRenderAlert(false), 10000);
-  };
-
+const Navbar = ({ blockchainService }) => {
   return (
-    <Fragment>
-      <nav className="navbar navbar-dark bg-dark">
-        <div id="test_block_chain">
-          <Link
-            className="nav-link active"
-            onClick={() => {
-              notRenderSettings();
-              notRenderCreateTransaction();
-              notRenderMinePendingTransactions();
-              displayWallet(false);
-            }}
-            style={{ color: "white" }}
-          >
+    <nav className="navbar navbar-dark bg-dark">
+      <div id="test_block_chain">
+        <button className="btn btn-outline-light">
+          <Link className="nav-link active" to="/" style={{ color: "white" }}>
             &nbsp;&nbsp;testBlockChain
           </Link>
-        </div>
-        <div>
-          {blockchainService.getPendingTransactions().length > 0 && (
-            <button
-              onClick={yesRenderMinePendingTransactions}
-              className="btn btn-outline-light"
-            >
-              Pending transactions
-              <span className="badge badge-light">
-                {blockchainService.getPendingTransactions().length}
-              </span>
+        </button>
+      </div>
+      <div>
+        {blockchainService.getPendingTransactions().length > 0 && (
+          <Link className="nav-link active" to="/settings">
+            <button className="btn btn-outline-light">
+              Pending Transactions
             </button>
-          )}
-          &nbsp;
-          <button onClick={yesRenderSettings} className="btn btn-outline-light">
+          </Link>
+        )}
+        &nbsp;
+        <button className="btn btn-outline-light">
+          {" "}
+          <Link className="nav-link active" to="/settings">
             Settings
-          </button>
-          &nbsp;
-          <button
-            onClick={yesRenderCreateTransaction}
-            className="btn btn-outline-light"
-          >
-            Create transaction
-          </button>
-        </div>
-      </nav>
-      <div style={{ visibility: renderAlert ? "visible" : "hidden" }}>
-        <Alerts content={renderAlert} />
+          </Link>
+        </button>
+        &nbsp;
+        <button className="btn btn-outline-light">
+          <Link className="nav-link active" to="/create-transaction">
+            Create transaction{" "}
+          </Link>
+        </button>
       </div>
-      <div style={{ display: renderSettings ? "block" : "none" }}>
-        <Settings
-          blockchainService={blockchainService}
-          renderSettings={renderSettings}
-          displayAlert={displayAlert}
-        />
-      </div>
-
-      <div style={{ display: renderCreateTransaction ? "block" : "none" }}>
-        <CreateTransaction
-          blockchainService={blockchainService}
-          displayAlert={displayAlert}
-          yesRenderMinePendingTransactions={yesRenderMinePendingTransactions}
-        />
-      </div>
-
-      <div
-        style={{ display: renderMinePendingTransactions ? "block" : "none" }}
-      >
-        <PendingTransactions
-          blockchainService={blockchainService}
-          clickHandlerTwo={clickHandlerTwo}
-          notRenderMinePendingTransactions={notRenderMinePendingTransactions}
-          displayAlert={displayAlert}
-        />
-      </div>
-    </Fragment>
+    </nav>
   );
 };
 

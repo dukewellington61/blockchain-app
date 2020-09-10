@@ -1,20 +1,14 @@
 import React, { Fragment, useState } from "react";
 import Transactions from "../transactions/Transactions";
 
-const PendingTransactions = ({
-  blockchainService,
-  clickHandlerTwo,
-  notRenderMinePendingTransactions,
-  displayAlert,
-}) => {
+const PendingTransactions = ({ blockchainService, displayAlert }) => {
+  console.log(blockchainService);
   const [renderInfo, setRenderInfo] = useState(false);
 
   const displayMiningInfo = () => setRenderInfo(true);
 
   const minePendingTransactions = () => {
     blockchainService.minePendingTransactions();
-    clickHandlerTwo(true);
-    notRenderMinePendingTransactions();
     displayAlert(
       "New Block has been successfully created and added to the blockchain."
     );

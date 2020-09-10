@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 
-const Block = ({ block, index, clickHandler }) => {
+const Block = ({ block, index, setIndex }) => {
   return (
     <Fragment>
       <div
         className="card"
-        onClick={clickHandler}
+        onClick={() => setIndex(index)}
         style={{ cursor: "pointer" }}
       >
         <div className="card-body">

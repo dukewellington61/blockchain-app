@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Transaction } from "../../blockchain";
+import { useHistory } from "react-router-dom";
 
-const CreateTransaction = ({
-  blockchainService,
-  yesRenderMinePendingTransactions,
-  displayAlert,
-}) => {
+const CreateTransaction = ({ blockchainService, displayAlert }) => {
   const [formData, setFormData] = useState({
     toAddress: "",
     amount: "",
@@ -16,6 +13,8 @@ const CreateTransaction = ({
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  let history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const tx = new Transaction();
@@ -24,7 +23,8 @@ const CreateTransaction = ({
     tx.amount = amount;
     tx.signTransaction(blockchainService.walletKeys[0].keyObj);
     blockchainService.addTransaction(tx);
-    yesRenderMinePendingTransactions();
+    console.log(blockchainService);
+    history.push("/pending-transactions");
     displayAlert("Transaction has been successfully created.");
   };
 

@@ -1,12 +1,7 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
-const Transaction = ({
-  index,
-  transaction,
-  blockchainService,
-  displayWallet,
-  clickHandlerTwo,
-}) => {
+const Transaction = ({ index, transaction, blockchainService }) => {
   return (
     <tr>
       <td>{index}</td>
@@ -15,35 +10,16 @@ const Transaction = ({
           "System"
         ) : (
           <Fragment>
-            <a
-              onClick={() => {
-                displayWallet(true);
-                clickHandlerTwo(false);
-              }}
-            >
-              {transaction.fromAddress}
-            </a>
-            <span className="text-muted">
-              <small>
-                {blockchainService.addressIsFromCurrentUser(
-                  transaction.fromAddress
-                ) && "That's yours!"}
-              </small>
-            </span>
+            <Link to="/wallet">{transaction.fromAddress}</Link>
           </Fragment>
         )}
       </td>
 
       <td className="text-truncate" style={{ maxWidth: "100px" }}>
         <Fragment>
-          <a
-            onClick={() => {
-              displayWallet(true);
-              clickHandlerTwo(false);
-            }}
-          >
-            {transaction.toAddress}
-          </a>
+          <Fragment>
+            <Link to="/wallet">{transaction.toAddress}</Link>
+          </Fragment>
           <span className="text-muted">
             <small>
               {blockchainService.addressIsFromCurrentUser(
