@@ -1,6 +1,12 @@
 import React, { Fragment } from "react";
 
-const Transaction = ({ index, transaction, blockchainService }) => {
+const Transaction = ({
+  index,
+  transaction,
+  blockchainService,
+  displayWallet,
+  clickHandlerTwo,
+}) => {
   return (
     <tr>
       <td>{index}</td>
@@ -9,7 +15,14 @@ const Transaction = ({ index, transaction, blockchainService }) => {
           "System"
         ) : (
           <Fragment>
-            <a>{transaction.fromAddress}</a>
+            <a
+              onClick={() => {
+                displayWallet(true);
+                clickHandlerTwo(false);
+              }}
+            >
+              {transaction.fromAddress}
+            </a>
             <span className="text-muted">
               <small>
                 {blockchainService.addressIsFromCurrentUser(
@@ -23,7 +36,14 @@ const Transaction = ({ index, transaction, blockchainService }) => {
 
       <td className="text-truncate" style={{ maxWidth: "100px" }}>
         <Fragment>
-          <a>{transaction.toAddress}</a>
+          <a
+            onClick={() => {
+              displayWallet(true);
+              clickHandlerTwo(false);
+            }}
+          >
+            {transaction.toAddress}
+          </a>
           <span className="text-muted">
             <small>
               {blockchainService.addressIsFromCurrentUser(

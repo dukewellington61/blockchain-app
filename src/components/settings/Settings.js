@@ -18,7 +18,6 @@ const Settings = ({ blockchainService, displayAlert }) => {
     displayAlert(
       `new settings: difficulty: ${blockchainService.blockchainInstance.difficulty}  mining reward: ${blockchainService.blockchainInstance.miningReward}`
     );
-    console.log(blockchainService);
   };
 
   return (

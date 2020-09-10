@@ -1,7 +1,13 @@
 import React, { Fragment } from "react";
 import Transaction from "./Transaction";
 
-const Transactions = ({ transactions, index, blockchainService }) => {
+const Transactions = ({
+  transactions,
+  index,
+  blockchainService,
+  displayWallet,
+  clickHandlerTwo,
+}) => {
   return (
     <div>
       {index !== "none" && <h1>Transactions inside block {index}</h1>}
@@ -30,6 +36,8 @@ const Transactions = ({ transactions, index, blockchainService }) => {
                   transaction={transaction}
                   index={index}
                   blockchainService={blockchainService}
+                  displayWallet={displayWallet}
+                  clickHandlerTwo={clickHandlerTwo}
                 />
               ))}
             </tbody>

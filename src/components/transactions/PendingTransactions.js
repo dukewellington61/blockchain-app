@@ -9,16 +9,15 @@ const PendingTransactions = ({
 }) => {
   const [renderInfo, setRenderInfo] = useState(false);
 
+  const displayMiningInfo = () => setRenderInfo(true);
+
   const minePendingTransactions = () => {
-    setRenderInfo(true);
-    setTimeout(() => {
-      blockchainService.minePendingTransactions();
-      clickHandlerTwo(true);
-      notRenderMinePendingTransactions();
-      displayAlert(
-        "New Block has been successfully created and added to the blockchain."
-      );
-    }, 5000);
+    blockchainService.minePendingTransactions();
+    clickHandlerTwo(true);
+    notRenderMinePendingTransactions();
+    displayAlert(
+      "New Block has been successfully created and added to the blockchain."
+    );
     setRenderInfo(false);
   };
 
@@ -42,7 +41,10 @@ const PendingTransactions = ({
 
         <button
           className="btn btn-primary"
-          onClick={minePendingTransactions}
+          onClick={() => {
+            displayMiningInfo();
+            setTimeout(() => minePendingTransactions(), 5000);
+          }}
           style={{ marginTop: "2rem" }}
         >
           Start mining

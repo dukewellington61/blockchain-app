@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Blockchain from "../blockchain/Blockchain";
 import Transactions from "../transactions/Transactions";
 import Navbar from "../layout/Navbar";
+import Wallet from "../wallets/Wallet";
 
 const Interface = ({ blockchainService }) => {
   const [blockIndex, setBlockIndex] = useState(null);
@@ -14,11 +15,16 @@ const Interface = ({ blockchainService }) => {
 
   const blockchain = blockchainService.blockchainInstance.chain;
 
+  const [renderWallet, setRenderWallet] = useState(false);
+
+  const displayWallet = (val) => setRenderWallet(val);
+
   return (
     <div>
       <Navbar
         blockchainService={blockchainService}
         clickHandlerTwo={clickHandlerTwo}
+        displayWallet={displayWallet}
       />
       <div className="container">
         <div
@@ -36,10 +42,15 @@ const Interface = ({ blockchainService }) => {
                 transactions={blockchain[blockIndex].transactions}
                 index={blockIndex}
                 blockchainService={blockchainService}
+                displayWallet={displayWallet}
+                clickHandlerTwo={clickHandlerTwo}
               />
             )}
           </div>
         </div>
+      </div>
+      <div style={{ display: renderWallet ? "block" : "none" }}>
+        <Wallet />
       </div>
     </div>
   );

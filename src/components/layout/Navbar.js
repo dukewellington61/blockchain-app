@@ -5,7 +5,7 @@ import CreateTransaction from "../transactions/CreateTransaction";
 import PendingTransactions from "../transactions/PendingTransactions";
 import Alerts from "../layout/Alerts";
 
-const Navbar = ({ blockchainService, clickHandlerTwo }) => {
+const Navbar = ({ blockchainService, clickHandlerTwo, displayWallet }) => {
   const [renderSettings, setRenderSettings] = useState(false);
 
   const yesRenderSettings = () => {
@@ -13,6 +13,7 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
     notRenderMinePendingTransactions();
     notRenderCreateTransaction();
     clickHandlerTwo(false);
+    displayWallet(false);
   };
 
   const notRenderSettings = () => {
@@ -27,6 +28,7 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
     notRenderSettings();
     notRenderMinePendingTransactions();
     clickHandlerTwo(false);
+    displayWallet(false);
   };
 
   const notRenderCreateTransaction = () => {
@@ -44,6 +46,7 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
     notRenderSettings();
     notRenderCreateTransaction();
     clickHandlerTwo(false);
+    displayWallet(false);
   };
 
   const notRenderMinePendingTransactions = () => {
@@ -68,6 +71,7 @@ const Navbar = ({ blockchainService, clickHandlerTwo }) => {
               notRenderSettings();
               notRenderCreateTransaction();
               notRenderMinePendingTransactions();
+              displayWallet(false);
             }}
             style={{ color: "white" }}
           >
