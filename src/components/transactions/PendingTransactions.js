@@ -1,23 +1,35 @@
 import React, { Fragment, useState } from "react";
 import Transactions from "../transactions/Transactions";
+<<<<<<< HEAD
 import { useHistory } from "react-router-dom";
 
 
 const PendingTransactions = ({ blockchainService, displayAlert }) => {
  
+=======
+
+const PendingTransactions = ({ blockchainService, displayAlert }) => {
+  console.log(blockchainService);
+>>>>>>> 7be6aafe50b9e8a055b0d2a4bb5c498410a4935c
   const [renderInfo, setRenderInfo] = useState(false);
 
   const displayMiningInfo = () => setRenderInfo(true);
 
+<<<<<<< HEAD
   let history = useHistory();
 
+=======
+>>>>>>> 7be6aafe50b9e8a055b0d2a4bb5c498410a4935c
   const minePendingTransactions = () => {
     blockchainService.minePendingTransactions();
     displayAlert(
       "New Block has been successfully created and added to the blockchain."
     );
     setRenderInfo(false);
+<<<<<<< HEAD
     history.push("/");
+=======
+>>>>>>> 7be6aafe50b9e8a055b0d2a4bb5c498410a4935c
   };
 
   return (

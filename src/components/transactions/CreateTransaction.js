@@ -22,7 +22,12 @@ const CreateTransaction = ({ blockchainService, displayAlert }) => {
     tx.toAddress = toAddress;
     tx.amount = amount;
     tx.signTransaction(blockchainService.walletKeys[0].keyObj);
+<<<<<<< HEAD
     blockchainService.addTransaction(tx); 
+=======
+    blockchainService.addTransaction(tx);
+    console.log(blockchainService);
+>>>>>>> 7be6aafe50b9e8a055b0d2a4bb5c498410a4935c
     history.push("/pending-transactions");
     displayAlert("Transaction has been successfully created.");
   };

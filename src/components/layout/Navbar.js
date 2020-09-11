@@ -13,9 +13,15 @@ const Navbar = ({ blockchainService }) => {
       </div>
       <div>
         {blockchainService.getPendingTransactions().length > 0 && (
+<<<<<<< HEAD
           <Link className="nav-link active" to="/pending-transactions">
             <button className="btn btn-outline-light">
               Pending Transactions {blockchainService.getPendingTransactions().length}
+=======
+          <Link className="nav-link active" to="/settings">
+            <button className="btn btn-outline-light">
+              Pending Transactions
+>>>>>>> 7be6aafe50b9e8a055b0d2a4bb5c498410a4935c
             </button>
           </Link>
         )}

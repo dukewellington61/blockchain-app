@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { Fragment, useState, useMemo } from "react";
+=======
+import React, { Fragment, useState } from "react";
+>>>>>>> 7be6aafe50b9e8a055b0d2a4bb5c498410a4935c
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { BlockchainService } from "./utils/blockchain";
@@ -10,9 +14,14 @@ import Wallet from "./components/wallets/Wallet";
 import Alert from "./components/layout/Alert";
 import PendingTransactions from "./components/transactions/PendingTransactions";
 
+<<<<<<< HEAD
 const App = () => {
 
   const blockchainService = useMemo(() => new BlockchainService(), []);  
+=======
+function App() {
+  const blockchainService = new BlockchainService();
+>>>>>>> 7be6aafe50b9e8a055b0d2a4bb5c498410a4935c
 
   const [renderAlert, setRenderAlert] = useState(false);
 
