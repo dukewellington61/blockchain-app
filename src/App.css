@@ -1,0 +1,15 @@
+/* @components/blockchain/Blockchain.js */
+/* @components/settings/Settings.js */
+/* @components/transactions/CreateTransaction.js */
+/* @components/transactions/PendingTransactions.js */
+.container {
+  margin-top: 7rem;
+  left: 1rem;
+}
+
+/* @components/blockchain/Block.js */
+.card {
+  width: 18rem;
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
