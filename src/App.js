@@ -66,7 +66,7 @@ const App = () => {
           />
           <Route
             exact
-            path="/wallet"
+            path="/wallet/:id"
             render={() => <Wallet blockchainService={blockchainService} />}
           />
         </Switch>

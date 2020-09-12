@@ -1,6 +1,9 @@
 import React from "react";
+import { useParams } from "react-router";
 
-const Wallet = (props) => {
+const Wallet = ({blockchainService}) => {
+  let { id } = useParams();
+
   return (
     <div class="container">
       <h1>Wallet details</h1>
@@ -8,7 +11,7 @@ const Wallet = (props) => {
       <p style={{ wordWrap: "break-word" }}>
         <strong>Address:</strong>
 
-        {"walletAddress"}
+        {id}
       </p>
 
       <p>

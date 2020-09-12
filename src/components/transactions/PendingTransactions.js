@@ -53,7 +53,7 @@ const PendingTransactions = ({ blockchainService, displayAlert }) => {
           role="alert"
           style={{ display: renderInfo ? "block" : "none" }}
         >
-          ...mining new block... <started className=""></started>{" "}
+          ...mining new block...wait for it.. <started className=""></started>{" "}
         </div>
       </div>
     </Fragment>

@@ -10,7 +10,7 @@ const Transaction = ({ index, transaction, blockchainService }) => {
           "System"
         ) : (
           <Fragment>
-            <Link to="/wallet">{transaction.fromAddress}</Link>
+            <Link to={"/wallet/" + transaction.fromAddress}>{transaction.fromAddress}</Link>
           </Fragment>
         )}
       </td>
@@ -18,7 +18,7 @@ const Transaction = ({ index, transaction, blockchainService }) => {
       <td className="text-truncate" style={{ maxWidth: "100px" }}>
         <Fragment>
           <Fragment>
-            <Link to="/wallet">{transaction.toAddress}</Link>
+          <Link to={"/wallet/" + transaction.toAddress}>{transaction.toAddress}</Link>
           </Fragment>
           <span className="text-muted">
             <small>
@@ -27,8 +27,7 @@ const Transaction = ({ index, transaction, blockchainService }) => {
               ) && "That's yours!"}
             </small>
           </span>
-        </Fragment>
-        )}
+        </Fragment>       
       </td>
 
       <td>
