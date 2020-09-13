@@ -1,12 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Transaction from "./Transaction";
 
 const Transactions = ({
   transactions,
   index,
   blockchainService,
-  displayWallet,
-  clickHandlerTwo,
+  hasLinkToWallet,
 }) => {
   return (
     <div>
@@ -30,14 +29,12 @@ const Transactions = ({
             </thead>
 
             <tbody>
-              {transactions.map((transaction, index, array) => (
+              {transactions.map((transaction, i, array) => (
                 <Transaction
-                  key={index}
                   transaction={transaction}
-                  index={index}
+                  index={i}
                   blockchainService={blockchainService}
-                  displayWallet={displayWallet}
-                  clickHandlerTwo={clickHandlerTwo}
+                  hasLinkToWallet={hasLinkToWallet}
                 />
               ))}
             </tbody>

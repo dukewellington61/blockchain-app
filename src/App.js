@@ -11,8 +11,7 @@ import Alert from "./components/layout/Alert";
 import PendingTransactions from "./components/transactions/PendingTransactions";
 
 const App = () => {
-
-  const blockchainService = useMemo(() => new BlockchainService(), []);  
+  const blockchainService = useMemo(() => new BlockchainService(), []);
 
   const [renderAlert, setRenderAlert] = useState(false);
 
@@ -66,13 +65,13 @@ const App = () => {
           />
           <Route
             exact
-            path="/wallet/:id"
+            path="/wallet/:address"
             render={() => <Wallet blockchainService={blockchainService} />}
           />
         </Switch>
       </Fragment>
     </Router>
   );
-}
+};
 
 export default App;

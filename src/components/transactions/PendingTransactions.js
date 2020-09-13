@@ -2,9 +2,7 @@ import React, { Fragment, useState } from "react";
 import Transactions from "../transactions/Transactions";
 import { useHistory } from "react-router-dom";
 
-
 const PendingTransactions = ({ blockchainService, displayAlert }) => {
- 
   const [renderInfo, setRenderInfo] = useState(false);
 
   const displayMiningInfo = () => setRenderInfo(true);
@@ -35,6 +33,7 @@ const PendingTransactions = ({ blockchainService, displayAlert }) => {
             }
             index={"none"}
             blockchainService={blockchainService}
+            hasLinkToWallet={false}
           />
         </div>
 
@@ -44,16 +43,14 @@ const PendingTransactions = ({ blockchainService, displayAlert }) => {
             displayMiningInfo();
             setTimeout(() => minePendingTransactions(), 5000);
           }}
-          style={{ marginTop: "2rem" }}
-        >
+          style={{ marginTop: "2rem" }}>
           Start mining
         </button>
         <div
           className="alert alert-success"
           role="alert"
-          style={{ display: renderInfo ? "block" : "none" }}
-        >
-          ...mining new block...wait for it.. <started className=""></started>{" "}
+          style={{ display: renderInfo ? "block" : "none" }}>
+          ...mining new block...wait for it..
         </div>
       </div>
     </Fragment>

@@ -24,6 +24,7 @@ const Interface = ({ blockchainService }) => {
                 transactions={blockchain[blockIndex].transactions}
                 index={blockIndex}
                 blockchainService={blockchainService}
+                hasLinkToWallet={true}
               />
             )}
           </div>
