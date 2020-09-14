@@ -8,10 +8,10 @@ const InfoBox = (props) => {
         role="alert"
         style={{ textAlign: "justify" }}
       >
-        <h4>Welcome!</h4>Play with this little app and see what this blockchain
-        does. Create new transactions and mine new blocks. Change settings >
-        difficulty and see the Proof of Work in action. Click on a block and see
-        what transactions it has.
+        <h4>Welcome!</h4>Create new transactions and mine new blocks. Change
+        settings > difficulty and see the Proof of Work in action. Click on a
+        block and see what transactions it has. This little app is here to help
+        you understand some of the things blockchains do.
         <p>
           {" "}
           <a href="https://github.com/dukewellington61/blockchain-app">
