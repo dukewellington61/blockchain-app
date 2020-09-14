@@ -8,7 +8,7 @@ const PendingTransactions = ({ blockchainService, displayAlert }) => {
   const displayMiningInfo = () => setRenderInfo(true);
 
   const minePendingTransactions = () => {
-    blockchainService.minePendingTransactions();
+    // blockchainService.minePendingTransactions();
     displayAlert(
       "New Block has been successfully created and added to the blockchain."
     );
