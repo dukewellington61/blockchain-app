@@ -1,7 +1,12 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-const Transaction = ({ index, transaction, blockchainService }) => {
+const Transaction = ({
+  index,
+  transaction,
+  blockchainService,
+  hasLinkToWallet,
+}) => {
   return (
     <tr>
       <td>{index}</td>
@@ -9,17 +14,42 @@ const Transaction = ({ index, transaction, blockchainService }) => {
         {transaction.fromAddress === null ? (
           "System"
         ) : (
-          <Fragment>
-            <Link to="/wallet">{transaction.fromAddress}</Link>
-          </Fragment>
+          <div>
+            {hasLinkToWallet ? (
+              <Link to={"/wallet/" + transaction.fromAddress}>
+                {transaction.fromAddress}
+              </Link>
+            ) : (
+              <div to={"/wallet/" + transaction.fromAddress}>
+                {transaction.fromAddress}
+              </div>
+            )}
+          </div>
         )}
+        <small>
+          {blockchainService.addressIsFromCurrentUser(transaction.toAddress) &&
+            "That's yours!"}
+        </small>
       </td>
 
       <td className="text-truncate" style={{ maxWidth: "100px" }}>
-        <Fragment>
-          <Fragment>
-            <Link to="/wallet">{transaction.toAddress}</Link>
-          </Fragment>
+        <div>
+          {transaction.toAddress === null ? (
+            "System"
+          ) : (
+            <div>
+              {hasLinkToWallet ? (
+                <Link to={"/wallet/" + transaction.toAddress}>
+                  {transaction.toAddress}
+                </Link>
+              ) : (
+                <div to={"/wallet/" + transaction.toAddress}>
+                  {transaction.toAddress}
+                </div>
+              )}
+            </div>
+          )}
+
           <span className="text-muted">
             <small>
               {blockchainService.addressIsFromCurrentUser(
@@ -27,8 +57,7 @@ const Transaction = ({ index, transaction, blockchainService }) => {
               ) && "That's yours!"}
             </small>
           </span>
-        </Fragment>
-        )}
+        </div>
       </td>
 
       <td>
