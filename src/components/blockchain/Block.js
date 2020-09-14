@@ -19,16 +19,30 @@ const Block = ({ block, index, setIndex }) => {
 
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <span className="">Hash</span>
+            <span>Hash</span>
 
             <div className="text-truncate">
-              <small>{block.hash}</small>
+              <small
+                style={{
+                  color: "#" + block.hash.substring(0, 6),
+                  fontWeight: "bold",
+                }}
+              >
+                {block.hash}
+              </small>
             </div>
-
+            <br />
             <span className="">Hash of previous block</span>
 
             <div className="text-truncate">
-              <small>{block.previousHash}</small>
+              <small
+                style={{
+                  color: "#" + block.previousHash.substring(0, 6),
+                  fontWeight: "bold",
+                }}
+              >
+                {block.previousHash}
+              </small>
             </div>
           </li>
 

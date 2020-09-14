@@ -10,7 +10,7 @@ const PendingTransactions = ({ blockchainService, displayAlert }) => {
   let history = useHistory();
 
   const minePendingTransactions = () => {
-    // blockchainService.minePendingTransactions();
+    blockchainService.minePendingTransactions();
     displayAlert(
       "New Block has been successfully created and added to the blockchain."
     );
@@ -43,13 +43,15 @@ const PendingTransactions = ({ blockchainService, displayAlert }) => {
             displayMiningInfo();
             setTimeout(() => minePendingTransactions(), 5000);
           }}
-          style={{ marginTop: "2rem" }}>
+          style={{ marginTop: "2rem" }}
+        >
           Start mining
         </button>
         <div
           className="alert alert-success"
           role="alert"
-          style={{ display: renderInfo ? "block" : "none" }}>
+          style={{ display: renderInfo ? "block" : "none" }}
+        >
           ...mining new block...wait for it..
         </div>
       </div>

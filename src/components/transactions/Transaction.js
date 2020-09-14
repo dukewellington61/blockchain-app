@@ -9,7 +9,7 @@ const Transaction = ({
 }) => {
   return (
     <tr>
-      <td>{index}</td>
+      <td>{index + 1}</td>
       <td className="text-truncate" style={{ maxWidth: "100px" }}>
         {transaction.fromAddress === null ? (
           "System"
@@ -17,46 +17,44 @@ const Transaction = ({
           <div>
             {hasLinkToWallet ? (
               <Link to={"/wallet/" + transaction.fromAddress}>
-                {transaction.fromAddress}
+                <div className="text-truncate">{transaction.fromAddress}</div>
               </Link>
             ) : (
-              <div to={"/wallet/" + transaction.fromAddress}>
+              <div
+                to={"/wallet/" + transaction.fromAddress}
+                className="text-truncate"
+              >
                 {transaction.fromAddress}
               </div>
             )}
           </div>
         )}
         <small>
-          {blockchainService.addressIsFromCurrentUser(transaction.toAddress) &&
-            "That's yours!"}
+          {blockchainService.addressIsFromCurrentUser(
+            transaction.fromAddress
+          ) && "(That's yours!)"}
         </small>
       </td>
 
-      <td className="text-truncate" style={{ maxWidth: "100px" }}>
+      <td style={{ maxWidth: "100px" }}>
         <div>
-          {transaction.toAddress === null ? (
-            "System"
+          {hasLinkToWallet ? (
+            <Link to={"/wallet/" + transaction.toAddress}>
+              <div className="text-truncate">{transaction.toAddress}</div>
+            </Link>
           ) : (
-            <div>
-              {hasLinkToWallet ? (
-                <Link to={"/wallet/" + transaction.toAddress}>
-                  {transaction.toAddress}
-                </Link>
-              ) : (
-                <div to={"/wallet/" + transaction.toAddress}>
-                  {transaction.toAddress}
-                </div>
-              )}
+            <div
+              to={"/wallet/" + transaction.toAddress}
+              className="text-truncate"
+            >
+              {transaction.toAddress}
             </div>
           )}
-
-          <span className="text-muted">
-            <small>
-              {blockchainService.addressIsFromCurrentUser(
-                transaction.toAddress
-              ) && "That's yours!"}
-            </small>
-          </span>
+          <small>
+            {blockchainService.addressIsFromCurrentUser(
+              transaction.toAddress
+            ) && "(That's yours!)"}
+          </small>
         </div>
       </td>
 
@@ -64,16 +62,25 @@ const Transaction = ({
         {transaction.amount}
         {transaction.fromAddress === null && (
           <span className="text-muted">
-            <small>(Block reward)</small>
+            <small> (Block reward)</small>
           </span>
         )}
       </td>
 
       <td>
         {transaction.timestamp}
-        <span className="text-muted">
-          <small>{transaction.timestamp}</small>
-        </span>
+        <div className="text-muted">
+          <small>
+            {new Intl.DateTimeFormat("en-GB", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+            }).format(transaction.timestamp)}
+          </small>
+        </div>
       </td>
       {}
       <td style={{ maxWidth: "40px" }}>

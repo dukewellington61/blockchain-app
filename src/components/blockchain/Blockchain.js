@@ -3,7 +3,10 @@ import Block from "./Block";
 
 const Blockchain = ({ blockchain, blockchainService, setIndex }) => {
   return (
-    <div className="container">
+    <div
+      className="container"
+      style={{ overflowX: "scroll", whiteSpace: "nowrap" }}
+    >
       {blockchain.map((block, index, arr) => (
         <Block
           key={index}

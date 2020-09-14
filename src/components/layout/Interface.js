@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Blockchain from "../blockchain/Blockchain";
 import Transactions from "../transactions/Transactions";
+import InfoBox from "../layout/InfoBox";
 
 const Interface = ({ blockchainService }) => {
   const [blockIndex, setBlockIndex] = useState(null);
@@ -11,6 +12,7 @@ const Interface = ({ blockchainService }) => {
 
   return (
     <div>
+      <InfoBox />
       <div className="container">
         <div className="interface_content">
           <Blockchain

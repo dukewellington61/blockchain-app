@@ -29,14 +29,16 @@ const Transactions = ({
             </thead>
 
             <tbody>
-              {transactions.map((transaction, i, array) => (
-                <Transaction
-                  transaction={transaction}
-                  index={i}
-                  blockchainService={blockchainService}
-                  hasLinkToWallet={hasLinkToWallet}
-                />
-              ))}
+              {transactions
+                .sort((prev, curr) => curr.timestamp - prev.timestamp)
+                .map((transaction, i, array) => (
+                  <Transaction
+                    transaction={transaction}
+                    index={array.length - array.indexOf(transaction) - 1}
+                    blockchainService={blockchainService}
+                    hasLinkToWallet={hasLinkToWallet}
+                  />
+                ))}
             </tbody>
           </table>
         )}

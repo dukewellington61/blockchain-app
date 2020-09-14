@@ -22,7 +22,7 @@ const CreateTransaction = ({ blockchainService, displayAlert }) => {
     tx.toAddress = toAddress;
     tx.amount = amount;
     tx.signTransaction(blockchainService.walletKeys[0].keyObj);
-    blockchainService.addTransaction(tx); 
+    blockchainService.addTransaction(tx);
     history.push("/pending-transactions");
     displayAlert("Transaction has been successfully created.");
   };
@@ -83,7 +83,7 @@ const CreateTransaction = ({ blockchainService, displayAlert }) => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Sign & create transaction
+          sign & create transaction
         </button>
       </form>
     </div>
