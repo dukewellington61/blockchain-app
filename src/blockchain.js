@@ -2,7 +2,7 @@ const SHA256 = require("crypto-js/sha256");
 const EC = require("elliptic").ec;
 const ec = new EC("secp256k1");
 
-class Transaction {
+export class Transaction {
   /**
    * @param {string} fromAddress
    * @param {string} toAddress
@@ -69,7 +69,7 @@ class Transaction {
   }
 }
 
-class Block {
+export class Block {
   /**
    * @param {number} timestamp
    * @param {Transaction[]} transactions
@@ -132,7 +132,7 @@ class Block {
   }
 }
 
-class Blockchain {
+export class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
     this.difficulty = 1;
@@ -287,7 +287,3 @@ class Blockchain {
     return true;
   }
 }
-
-module.exports.Blockchain = Blockchain;
-module.exports.Block = Block;
-module.exports.Transaction = Transaction;
