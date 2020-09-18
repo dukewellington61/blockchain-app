@@ -2,9 +2,9 @@ import React from "react";
 
 const InfoBox = (props) => {
   return (
-    <div class="container">
+    <div className="container">
       <div
-        class="alert alert-primary alert-dismissible fade show"
+        className="alert alert-primary alert-dismissible fade show"
         role="alert"
         style={{ textAlign: "justify" }}
       >
@@ -20,10 +20,9 @@ const InfoBox = (props) => {
         </p>
         <button
           type="button"
-          class="close"
+          className="close"
           data-dismiss="alert"
           aria-label="Close"
-          onClick="dismissInfoMessage()"
         >
           <span aria-hidden="true">&times;</span>
         </button>

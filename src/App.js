@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useMemo } from "react";
+import React, { Fragment, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { BlockchainService } from "./utils/blockchain";
@@ -10,9 +10,9 @@ import Wallet from "./components/wallets/Wallet";
 import Alert from "./components/layout/Alert";
 import PendingTransactions from "./components/transactions/PendingTransactions";
 
-const App = () => {
-  const blockchainService = useMemo(() => new BlockchainService(), []);
+const blockchainService = new BlockchainService();
 
+const App = () => {
   const [renderAlert, setRenderAlert] = useState(false);
 
   const displayAlert = (val) => {
