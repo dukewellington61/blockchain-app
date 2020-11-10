@@ -14,7 +14,10 @@ const InfoBox = (props) => {
         you understand some of the things blockchains do.
         <p>
           {" "}
-          <a href="https://github.com/dukewellington61/blockchain-app">
+          <a
+            href="https://github.com/dukewellington61/blockchain-app"
+            target="blank"
+          >
             see the code on github <i class="fab fa-github"></i>
           </a>{" "}
         </p>
