@@ -40,8 +40,9 @@ const Settings = ({ blockchainService, displayAlert }) => {
             required
           ></input>
           <small id="difficultyHelp" className="form-text text-muted">
-            Difficulty controls how long the mining process takes. Higher
-            numbers will make mining a lot slower! Default: 2
+            Be carefull! Setting the difficulty too high will overwhelm your
+            device and bring your browser to a standstill. Up to 5 should be
+            okay.
           </small>
         </div>
 

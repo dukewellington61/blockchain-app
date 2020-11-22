@@ -8,12 +8,24 @@ const InfoBox = (props) => {
         role="alert"
         style={{ textAlign: "justify" }}
       >
-        <h4>Welcome!</h4>Create new transactions and mine new blocks. Change
-        settings > difficulty and see the Proof of Work in action. Click on a
-        block and see what transactions it has. This little app is here to help
-        you understand some of the things blockchains do.
+        This demo lets you create transactions which can then be written into
+        the blocks of a blockchain. However, before a new block can be mined, a
+        cryptographic puzzle must be solved. In settings you can change the
+        difficulty of the puzzle. The higher you go, the longer the algorithm
+        will need to find a solution. The "Nonce" in the newly created block
+        tells you how many computations had to be performed by your system,
+        before a new block could be added to the blockchain. <br />
+        Blockchains are all about decentralized, tamper proof storage of data.
+        The Proof of Work (PoW) consensus mechanism is an essential part of
+        that. Said cryptographic puzzle lays at the heart of the PoW. Click
+        <a
+          href="https://academy.binance.com/en/articles/proof-of-work-explained"
+          target="blank"
+        >
+          &nbsp;here&nbsp;
+        </a>
+        to learn more.
         <p>
-          {" "}
           <a
             href="https://github.com/dukewellington61/blockchain-app"
             target="blank"
