@@ -17,7 +17,7 @@ const InfoBox = (props) => {
         before a new block could be added to the blockchain. <br />
         Blockchains are all about decentralized, tamper proof storage of data.
         The Proof of Work (PoW) consensus mechanism is an essential part of
-        that. Said cryptographic puzzle lays at the heart of the PoW. Click
+        that. Cryptographic puzzles lay at the heart of the PoW. Click
         <a
           href="https://academy.binance.com/en/articles/proof-of-work-explained"
           target="blank"
