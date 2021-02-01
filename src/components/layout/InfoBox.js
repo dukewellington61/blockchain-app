@@ -27,7 +27,7 @@ const InfoBox = (props) => {
         to learn more.
         <p>
           <a
-            href="https://github.com/dukewellington61/blockchain-app"
+            href="https://github.com/akoeth-portfolio/blockchain-functionality-showcase-app"
             target="blank"
           >
             see the code on github <i class="fab fa-github"></i>
